@@ -9,7 +9,7 @@ pipelineJob('devops/Build/terraform/build_terraform_environment') {
       scm {
         git {
            remote { url(repo) }
-           scriptPath('pipeline/pipeline/terraformrun.groovy')
+           scriptPath('pipeline/terraformrun.groovy')
            extensions {}
 
             }
