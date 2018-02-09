@@ -6,7 +6,7 @@ node {
     stage "Build Docker Image"
     sh "docker build -f docker/terraform_base/Dockerfile -t terraform_base ."
 // Run terraform container
-   stage "Run Terraform Image"
-    sh "docker run terraform_base"
+   stage "Build custom Terraform Image"
+    sh "docker run terraform_base init"
 // push state file back to git repo
 }
