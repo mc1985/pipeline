@@ -5,16 +5,16 @@ node {
           git {
               remote {
                   name('terraform module')
-                  url('')
+                  url('https://github.com/mc1985/pipeline.git')
         }
           }
             }
-  
+
 }
 // Build new terraform images
     stage "Build Docker Image"
-    sh docker build -t azure-test-app .
+    sh "docker build -f docker/terraform_base/Dockerfile -t terraform_base ."
 // Run terraform container
    stage "Run Terraform Image"
-    sh docker run terraform_run
+    sh "docker run terraform_base"
 // push state file back to git repo
