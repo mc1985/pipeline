@@ -1,1 +1,1 @@
-FROM terraform:latest
+FROM hashicorp/terraform:latest
