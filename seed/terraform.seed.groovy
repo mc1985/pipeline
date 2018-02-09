@@ -1,13 +1,17 @@
+folder('devops')
+folder('devops/Build')
+folder('devops/Build/terraform')
 folder('devops/Build/terraform')
 pipelineJob('devops/Build/terraform/build_terraform_environment') {
-  def repo = 'your repo here'
+  def repo = 'https://github.com/mc1985/pipeline.git'
   definition {
     cpsScm {
       scm {
         git {
            remote { url(repo) }
-           ScriptPath('pathtofile/terraformrun.groovy')
+           scriptPath('pipeline/pipeline/terraformrun.groovy')
            extensions {}
+
             }
           }
         }
