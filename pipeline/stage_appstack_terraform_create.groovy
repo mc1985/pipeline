@@ -1,21 +1,12 @@
-pipeline {
-  agent {
-    label 'orlando-win-7'
-  }
-  options {
-    timestamps()
-  }
 // Pull code from git
-stages {
-    stage ("Pull code from git")
-    git url: "", branch: '' //Add your Git URL and Branch for the terraform Project
+node {
+    stage "Pull code from git"
+    git url: "https://github.com/mc1985/pipeline.git", branch: 'master'
 // Build new terraform images
-    stage ("Build Docker Image")
-    sh "docker build -t terraform_custom ."
+    stage "Build Docker Image"
+    sh "docker build -f docker/terraform_base/Dockerfile -t terraform_base ."
 // Run terraform container
-   stage ("run custom Terraform Image"){
-     withCredentials([file(credentialsId:'aws_staging.tfvars', variable:'TFVARS')]) {
-    sh "docker run -t --rm -e ACTION=plan -v $TFVARS=env-vars/aws_staging.tfvars terraform_custom"
-  }
- }
+   stage "Build custom Terraform Image"
+    sh "docker run terraform_base init"
+// push state file back to git repo
 }
