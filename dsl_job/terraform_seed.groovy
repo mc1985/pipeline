@@ -6,7 +6,7 @@ def repo = 'https://github.com/mc1985/pipeline.git' // Put your GIT URL HERE
 folder('deploy')
 folder("deploy/${stack}")
 folder("deploy/${stack}/${env}")
-pipelineJob("devops/Build/terraform/create_${env}_${stack}_terraform") {
+pipelineJob("deploy/${stack}/${env}/create_${env}_${stack}_terraform") {
   definition {
     cpsScm {
       scm {
@@ -19,7 +19,7 @@ pipelineJob("devops/Build/terraform/create_${env}_${stack}_terraform") {
         }
       }
     }
-pipelineJob("devops/Build/terraform/destroy_${env}_${stack}_terraform") {
+pipelineJob("deploy/${stack}/${env}/destroy_${env}_${stack}_terraform") {
   definition {
     cpsScm {
       scm {
