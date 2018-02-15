@@ -1,11 +1,13 @@
 // Create Your Folder Structure Below
-folder('devops')
-folder('devops/Build')
-folder('devops/Build/terraform')
+def env = 'stage'       // environment key
+def stack = 'appstack'  //application stack name
+def repo = 'https://github.com/mc1985/pipeline.git' // Put your GIT URL HERE
+folder('deploy')
+folder("deploy/${stack}")
+folder("deploy/${stack}/${env}")
   def env = 'stage'
   def stack = 'appstack'
 pipelineJob("devops/Build/terraform/create_${env}_${stack}_terraform") {
-  def repo = 'https://github.com/mc1985/pipeline.git' // Put your GIT URL HERE
   definition {
     cpsScm {
       scm {
@@ -19,7 +21,6 @@ pipelineJob("devops/Build/terraform/create_${env}_${stack}_terraform") {
       }
     }
 pipelineJob("devops/Build/terraform/destroy_${env}_${stack}_terraform") {
-  def repo = 'https://github.com/mc1985/pipeline.git' // Put your GIT URL HERE
   definition {
     cpsScm {
       scm {
