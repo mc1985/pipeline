@@ -11,7 +11,7 @@ pipelineJob('devops/Build/terraform/create_${env}_${stack}_terraform') {
       scm {
         git {
            remote { url(repo) }
-           scriptPath('pipeline/${env}_${stack}_terraform_create.groovy')  // Put the Path to the Pipeline Job
+           scriptPath("pipeline/${env}_${stack}_terraform_create.groovy")  // Put the Path to the Pipeline Job
            extensions {}
             }
           }
@@ -25,7 +25,7 @@ pipelineJob('devops/Build/terraform/destroy_${env}_${stack}_terraform') {
       scm {
         git {
           remote { url(repo) }
-          scriptPath('pipeline/${env}_${stack}_terraform_destroy.groovy')  // Put the Path to the Pipeline Job
+          scriptPath("pipeline/${env}_${stack}_terraform_destroy.groovy")  // Put the Path to the Pipeline Job
           extensions {}
                 }
               }
