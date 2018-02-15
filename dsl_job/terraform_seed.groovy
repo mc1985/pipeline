@@ -2,11 +2,10 @@
 def env = 'stage'       // environment key
 def stack = 'appstack'  //application stack name
 def repo = 'https://github.com/mc1985/pipeline.git' // Put your GIT URL HERE
+
 folder('deploy')
 folder("deploy/${stack}")
 folder("deploy/${stack}/${env}")
-  def env = 'stage'
-  def stack = 'appstack'
 pipelineJob("devops/Build/terraform/create_${env}_${stack}_terraform") {
   definition {
     cpsScm {
