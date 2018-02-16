@@ -11,7 +11,7 @@ RUN curl -sSL -O "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/
     && mv terraform /usr/local/bin \
     && rm -rf terraform_${TERRAFORM_VERSION}_linux_amd64.zip
 
-CMD mkdir /app && /security
+CMD mkdir /app
 
 COPY . /app
 
