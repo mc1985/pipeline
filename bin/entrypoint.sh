@@ -6,13 +6,13 @@ terraform init
 
 case ${ACTION} in
   "plan")
-    terraform plan
+    terraform plan -var-file=/seurity/terraform.tfvars
     ;;
   "apply")
-    terraform apply
+    terraform apply -var-file=/seurity/terraform.tfvars
     ;;
   "destroy")
-    terraform destroy
+    terraform destroy -var-file=/seurity/terraform.tfvars
     ;;
   *)
     exit 0
