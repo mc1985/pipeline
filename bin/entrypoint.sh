@@ -13,6 +13,7 @@ case ${ACTION} in
     ;;
   "destroy")
     terraform destroy -var-file=/security/terraform.tfvars
+    ;;
   *)
     exit 0
 esac
