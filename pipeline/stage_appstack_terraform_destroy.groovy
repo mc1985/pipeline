@@ -7,7 +7,7 @@ node {
     sh "docker build -f Dockerfile -t terraform_base ."
 // Run terraform container
     stage ("run custom Terraform Image"){
-    withCredentials([file(credentialsId:'terrafrom.tfvars', variable:'TFVARS')]) {
+    withCredentials([file(credentialsId:'terraform.tfvars', variable:'TFVARS')]) {
     sh "docker run -t --rm -e ACTION=plan -v $TFVARS=env-vars/terraform.tfvars terraform_base"
   }
 }
