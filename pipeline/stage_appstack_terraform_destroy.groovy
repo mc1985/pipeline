@@ -8,7 +8,7 @@ node {
 // Run terraform container
     stage ("run custom Terraform Image"){
     withCredentials([file(credentialsId:'terraform.tfvars', variable:'TFVARS')]) {
-    sh "docker run -t --rm -e ACTION=plan -v $TFVARS=terraform.tfvars terraform_base"
+    sh "docker run -t --rm -e ACTION=plan -v $TFVARS=/security/terraform.tfvars terraform_base"
   }
 }
 // push state file back to git repo
