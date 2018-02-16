@@ -6,13 +6,13 @@ terraform init
 
 case ${ACTION} in
   "plan")
-    terraform plan -var-file=/security/terraform.tfvars
+    terraform plan -var-file=/terraform.tfvars
     ;;
   "apply")
-    terraform apply -var-file=/security/terraform.tfvars
+    terraform apply -var-file=/terraform.tfvars
     ;;
   "destroy")
-    terraform destroy -var-file=/security/terraform.tfvars
+    terraform destroy -var-file=/terraform.tfvars
     ;;
   *)
     exit 0
